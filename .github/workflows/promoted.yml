@@ -1,0 +1,16 @@
+name: Publish Release
+on:
+  push:
+    tags:
+      - 'stable'
+      - 'beta'
+      - 'insider'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Create a Release
+      run: |
+        echo "$(tags)" >> $GITHUB_OUTPUT
+      
